@@ -30,10 +30,14 @@ if __name__ == '__main__':
 			except:
 				break
 		cap.release()
-
-	label_binarizer = LabelBinarizer()
-	label_binarizer.fit(y)
+	x = np.array(x)
+	y = np.array(y)
+	x = x / 255.0
 	X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.20, random_state=42)
+	X_train = X_train.astype('float32')
+	y_train = y_train.astype('int32')
+	X_test = X_test.astype('float32')
+	y_test = y_test.astype('int32')
 	joblib.dump(X_train, 'X_train.pkl') 
 	joblib.dump(y_train, 'y_train.pkl') 
 	joblib.dump(X_test, 'X_test.pkl') 
