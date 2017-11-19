@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/cans', methods=['POST'])
 def cans():
 	data = json.loads(request.data)
-	data = data['img']
+	data = data['img']															
 	data = base64.b64decode(data)
 	response_dict = recognition.predict(data)
 	# response_dict = {'result': 'popo'}
