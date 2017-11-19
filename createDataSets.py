@@ -23,6 +23,7 @@ if __name__ == '__main__':
 			try:
 				ret, frame = cap.read()
 				frame = cv2.resize(frame, (32, 32), interpolation=cv2.INTER_AREA)
+				frame = frame.reshape(3, 32, 32)
 				x.append(frame)
 				y.append(i)
 				cont += 1
