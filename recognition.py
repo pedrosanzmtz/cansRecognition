@@ -5,6 +5,8 @@ from validation import get_model
 
 model = get_model()
 
+values = ['pepsi', 'manzanita', '7up']
+
 def predict(data):
 	img = np.fromstring(data, np.uint8)
 	img = cv2.imdecode(img, cv2.IMREAD_COLOR)
@@ -13,4 +15,9 @@ def predict(data):
 	img = img / 255.0
 	img = img.astype('float32')
 	result = model.predict(img)
+	try:
+		uid = int(np.where(result[0]==1)[0])
+		result = {'result': values[uid]}
+	except:
+		result = {'result': 'oie no lo se'}
 	return result
