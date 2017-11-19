@@ -15,11 +15,9 @@ def predict(data):
 	img = img.reshape(1, 3, 32, 32)
 	img = img / 255.0
 	img = img.astype('float32')
-	result = np.round(model.predict(img))
-	#print(result)
-	try:
-		uid = int(np.where(result[0]==1)[0])
-		result = {'result': values[uid]}
-	except:
-		result = {'result': 'oie no lo se'}
+	r = model.predict(img)
+	result = dict()
+	result['pepsi'] = round(r[0][0], 2)
+	result['manzanita'] = round(r[0][1], 2)
+	result['7up'] = round(r[0][2], 2)
 	return result
