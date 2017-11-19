@@ -6,8 +6,8 @@ app = Flask(__name__)
 @app.route('/cans', methods=['POST'])
 def cans():
 	data = json.loads(request.data)
-	# response_dict = reservamosApi.getPlaces(data['img'])
-	response_dict = {'result': 'popo'}
+	response_dict = reservamosApi.getPlaces(data['img'])
+	# response_dict = {'result': 'popo'}
 	response_json = json.dumps(response_dict)
 	response = Response(response=response_json, status=200, mimetype="application/json")
 	return response
