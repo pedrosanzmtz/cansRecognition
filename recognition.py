@@ -17,7 +17,7 @@ def predict(data):
 	img = img.astype('float32')
 	r = model.predict(img)
 	result = dict()
-	result['pepsi'] = round(r[0][0], 2)
-	result['manzanita'] = round(r[0][1], 2)
-	result['7up'] = round(r[0][2], 2)
+	result['pepsi'] = round(r[0][0], 4)
+	result['manzanita'] = round(r[0][1], 4)
+	result['7up'] = round(r[0][2], 4)
 	return result
